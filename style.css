@@ -1,0 +1,460 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Amiri:wght@400;700&display=swap');
+
+:root {
+    --primary-color: #2E86AB;
+    --secondary-color: #e67e22;
+    --secondary-color-rgb: 230, 126, 34;
+    --bg-color: #f7f9fc;
+    --text-color: #2c3e50;
+    --card-bg: #ffffff;
+    --glass-border: rgba(0, 0, 0, 0.05);
+    --shadow-color: rgba(0, 0, 0, 0.05);
+    --success-color: #27ae60;
+    --accent-color: #e74c3c;
+    --verse-color: #16a085;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+    --primary-color: #5dade2;
+    --secondary-color: #f39c12;
+    --secondary-color-rgb: 243, 156, 18;
+    --bg-color: #1a202c;
+    --text-color: #ecf0f1;
+    --card-bg: #2d3748;
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --verse-color: #a3e4d7;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Amiri', serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    direction: rtl;
+    min-height: 100vh;
+    transition: var(--transition);
+    line-height: 1.6;
+}
+
+/* Banner */
+/* Spread Message Section */
+.spread-container {
+    text-align: center;
+    margin: 0 auto 2.5rem;
+    padding: 0 1rem;
+    transform: translateY(-10px);
+}
+
+.spread-text {
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    background: var(--card-bg);
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    display: inline-block;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    border: 1px solid var(--glass-border);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 1s ease-out, glow-pulse 3s infinite alternate;
+}
+
+[data-theme="dark"] .spread-text {
+    background: rgba(45, 55, 72, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+@keyframes glow-pulse {
+    0% {
+        box-shadow: 0 5px 15px var(--shadow-color);
+        border-color: var(--glass-border);
+    }
+
+    100% {
+        box-shadow: 0 5px 25px rgba(var(--secondary-color-rgb), 0.3);
+        border-color: var(--secondary-color);
+        transform: scale(1.02);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Thinner padding */
+    padding: 0.5rem 5%;
+    width: 100%;
+    margin: 0;
+    /* Sticky Positioning */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    /* Dark Blue Gradient */
+    background: linear-gradient(90deg, #1e3c72, #2a5298);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] header {
+    background: linear-gradient(90deg, #141e30, #243b55);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    object-fit: cover;
+}
+
+.user-info h1 {
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.2rem;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle {
+    background: var(--card-bg);
+    border: 2px solid var(--glass-border);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.theme-toggle:hover {
+    transform: rotate(15deg);
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Image Section */
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0 2rem;
+}
+
+.image-wrapper {
+    position: relative;
+    text-align: center;
+}
+
+.feature-img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    /* Circle */
+    border: 5px solid var(--primary-color);
+    object-fit: cover;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    animation: float 6s ease-in-out infinite;
+    transition: var(--transition);
+}
+
+.feature-img:hover {
+    transform: scale(1.05);
+    border-color: var(--secondary-color);
+}
+
+.img-caption {
+    margin-top: 1rem;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+}
+
+.tab-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-family: 'Cairo', sans-serif;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 1rem;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.tab-btn:hover {
+    background: var(--bg-color);
+    transform: translateY(-2px);
+}
+
+.tab-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 10px rgba(46, 134, 171, 0.3);
+}
+
+/* Content Area */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem 4rem;
+}
+
+.dhikr-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    border: 1px solid var(--glass-border);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.dhikr-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px var(--shadow-color);
+}
+
+.dhikr-card.completed {
+    opacity: 0.6;
+    background: rgba(39, 174, 96, 0.05);
+    border-color: var(--success-color);
+}
+
+.dhikr-content {
+    margin-bottom: 2rem;
+}
+
+.dhikr-text {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    line-height: 2.2;
+    font-weight: 600;
+}
+
+/* Specific Verse Color */
+.dhikr-text {
+    color: var(--text-color);
+    /* Default */
+}
+
+/* We can use CSS classes injected by JS or just style text generally.
+   The user wants "Ayat" in one color, "Hadith" in another.
+   We assume main text is Verse/Dua, and Meaning is Hadith/Benefit.
+*/
+.dhikr-text {
+    color: var(--text-color);
+}
+
+/* If you want verses specifically colored, we need to wrap them in spans or just color the header text different. 
+   Let's use a nice dark green/blue for the main text in light mode. */
+[data-theme="light"] .dhikr-text {
+    color: #2c3e50;
+    /* Dark Blue-Grey */
+}
+
+.dhikr-meaning {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    background: rgba(var(--secondary-color-rgb), 0.05);
+    padding: 1rem;
+    border-radius: 12px;
+    border-right: 4px solid var(--secondary-color);
+    margin-top: 1rem;
+    font-family: 'Cairo', sans-serif;
+    line-height: 1.6;
+}
+
+/* Action Area */
+.dhikr-action {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.counter-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    /* Bright Blue Gradient */
+    background: linear-gradient(135deg, #00B4DB, #0083B0);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 131, 176, 0.4);
+    transition: var(--transition);
+    z-index: 2;
+}
+
+.counter-btn .label {
+    font-size: 0.7rem;
+    font-weight: normal;
+    margin-top: 4px;
+    opacity: 0.9;
+}
+
+.counter-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #56CCF2, #2F80ED);
+    box-shadow: 0 6px 20px rgba(0, 131, 176, 0.6);
+}
+
+.counter-btn:active {
+    transform: scale(0.95);
+}
+
+.counter-btn.pulse {
+    animation: pulse 0.3s ease-in-out;
+}
+
+.counter-btn.done {
+    background: var(--success-color);
+}
+
+.progress-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    width: 86px;
+    /* button 80 + stroke space */
+    height: 86px;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.progress-ring circle {
+    fill: transparent;
+    stroke: var(--glass-border);
+    stroke-width: 6;
+}
+
+.progress-ring .progress {
+    stroke: var(--secondary-color);
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.2s;
+}
+
+.dhikr-card.completed .progress-ring .progress {
+    stroke: var(--success-color);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+footer {
+    text-align: center;
+    font-family: 'Cairo', sans-serif;
+    color: var(--text-color);
+    opacity: 0.7;
+    margin-top: 2rem;
+}
+
+/* Adjustments for Mobile */
+@media (max-width: 600px) {
+    .tabs {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+        flex-wrap: nowrap;
+    }
+
+    .tabs::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .tabs::-webkit-scrollbar-thumb {
+        background: var(--glass-border);
+        border-radius: 2px;
+    }
+
+    .tab-btn {
+        flex: 0 0 auto;
+    }
+
+    .feature-img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .dhikr-text {
+        font-size: 1.3rem;
+    }
+}
